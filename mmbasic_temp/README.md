@@ -1,0 +1,1 @@
+Temporary files of MacroModel (torsional + low-mode sampling) conformational searches are stored here

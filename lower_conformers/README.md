@@ -1,0 +1,1 @@
+Optimized conformational ensembles after RMSD analysis and high-/low-energy partition are stored here

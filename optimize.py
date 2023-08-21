@@ -215,17 +215,17 @@ def rmsd_filter(input_data):
     filtered_p.filter(lambda m: 'succ' in m.descr)
 
     # Choose a method of RMSD filtering
-    use_ring_rmsd = False
-    niso_full = None
-    with open(NISO_JSON, "r") as f:
-        niso_data = json.load(f)
-    for item in niso_data:
-        if item['mol'] == molname:
-            niso_full = item['niso']
-            if item['niso'] > 1000:
-                use_ring_rmsd = True
-            break
-    assert niso_full is not None
+    # use_ring_rmsd = False
+    # niso_full = None
+    # with open(NISO_JSON, "r") as f:
+    #     niso_data = json.load(f)
+    # for item in niso_data:
+    #     if item['mol'] == molname:
+    #         niso_full = item['niso']
+    #         if item['niso'] > 1000:
+    #             use_ring_rmsd = True
+    #         break
+    # assert niso_full is not None
     
     # Perform RMSD filtering
     initial_size = len(filtered_p)
@@ -315,7 +315,7 @@ def record_energies(input_data):
         # Add the conformer to the molecule
         mol.AddConformer(conf)
 
-        # Perform MMFF optimization on the molecule using the provided coordinates
+        # Perform single-point energy calculation
         mmff_props = AllChem.MMFFGetMoleculeProperties(mol)
         forcefield = AllChem.MMFFGetMoleculeForceField(mol, mmff_props)
         energy = forcefield.CalcEnergy()
@@ -566,5 +566,4 @@ def main():
 
 if __name__ == "__main__":
     import environments as env
-    # main()
     env.exec(__file__, func=main, env='intel')

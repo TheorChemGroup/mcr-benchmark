@@ -1,0 +1,1 @@
+Temporary files of MTD conformational searches in XTB are stored here

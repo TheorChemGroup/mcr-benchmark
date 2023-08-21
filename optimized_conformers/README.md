@@ -1,0 +1,1 @@
+Optimized conformational ensembles are stored here
