@@ -1,0 +1,3 @@
+[submodule "chemscripts"]
+	path = chemscripts
+	url = https://gitlab.com/knvvv/chemscripts.git
