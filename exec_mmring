@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Change to the specified directory
 cd "$1"

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Single-threaded execution of xtb
 export OMP_NUM_THREADS=1
