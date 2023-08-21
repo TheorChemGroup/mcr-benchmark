@@ -1,11 +1,10 @@
 import glob, ntpath, json, zipfile, os
 
 MOLFILES = {}
-# SELECTED_MOLECULES = ["pdb_1FKJ", "pdb_2IYA", "pdb_3KEE", "pdb_3M6G", "pdb_1A7X", "pdb_7UPJ", "pdb_2C6H", "pdb_2QZK", "pdb_1NWX", "pdb_1QZ5"]
-SELECTED_MOLECULES = ["pdb_2QZK", "pdb_2C6H", "pdb_1NWX", "pdb_3M6G", "pdb_2IYA", "csd_FINWEE10", "csd_RULSUN", "csd_YIVNOG", "csd_MIWTER", "csd_RECRAT"]
+RANDOM_MOLECULES = ["pdb_2QZK", "pdb_2C6H", "pdb_1NWX", "pdb_3M6G", "pdb_2IYA", "csd_FINWEE10", "csd_RULSUN", "csd_YIVNOG", "csd_MIWTER", "csd_RECRAT"]
 for sdf in glob.glob(os.path.join('..', 'start_conformers', '*.sdf')):
     molname = ntpath.basename(sdf).replace('.sdf', '')
-    if molname in SELECTED_MOLECULES:
+    if molname in RANDOM_MOLECULES:
         MOLFILES[molname] = sdf
 
 ARCHIVE_NAME = 'check_small_testset.zip'
