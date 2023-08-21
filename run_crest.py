@@ -1,9 +1,10 @@
 import os, json, time, subprocess, shutil
 
-DO_GENCROSSING_FAILED = True
+DO_GENCROSSING_FAILED = False # Then, after False repeat with True
+# After iteration with DO_GENCROSSING_FAILED = False, list all failed calcs in GENERIC_CROSSING_FAILED:
 GENERIC_CROSSING_FAILED = ['csd_FINWEE10', 'csd_MIWTER', 'csd_RULSUN', 'csd_YIVNOG', 'pdb_1NWX', 'pdb_2IYA', 'pdb_3M6G']
 
-MTD_DIR = './crest_test'
+MTD_DIR = './crest_temp'
 TESTSET_JSON = 'small_testcases.json'
 if DO_GENCROSSING_FAILED:
     CREST_METHOD = 'crestfailed'
@@ -11,7 +12,7 @@ else:
     CREST_METHOD = 'crest'
 DF_FILENAME = f'{CREST_METHOD}_df.csv'
 OUTPUT_DIR = f'{CREST_METHOD}_conformers'
-CPULOAD_JSON = f'{CREST_METHOD}_cpuload.json'
+CPULOAD_JSON = f'cpuload_{CREST_METHOD}.json'
 CPULOAD_DATA = {}
 
 
@@ -95,7 +96,6 @@ def gen_crest(molname, sdf_name, p, charge=0):
 
 def main():
     import pandas as pd
-    import numpy as np
     import pyxyz
     from charges import CHARGES, CHARGES_MOLS
 
@@ -162,5 +162,4 @@ def main():
 
 if __name__ == "__main__":
     import environments as env
-    # main()
-    env.exec(__file__, func=main, env='intelrdkit')
+    env.exec(__file__, func=main, env='intel')

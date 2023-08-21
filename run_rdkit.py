@@ -1,9 +1,8 @@
-import time
+import time, os, json
 
 OUTPUT_DIR = 'rdkit_conformers'
 TESTSET_JSON = 'testcases.json'
 MAX_TIME = 10 * 60 # Time in seconds
-# MAX_TIME = 5 # Time in seconds
 RDKIT_METHOD = 'rdkit' # Name of items in df
 DF_FILENAME = 'rdkit_df.csv'
 
@@ -100,7 +99,6 @@ def gen_rdkit(molname, input_file, p):
     p.atom_symbols = [atom.GetSymbol() for atom in mol.GetAtoms()]
 
 def main():
-    import os, json
     import pandas as pd
     import ringo
     
@@ -135,7 +133,7 @@ def main():
             gen_rdkit(molname, os.path.join(INPUT_DIR, f'{molname}.sdf'), p)
         
         p.generate_connectivity(0, mult=1.3, ignore_elements=['HCarbon'])
-        niso = p.generate_isomorphisms()
+        p.generate_isomorphisms()
         ntotal = len(p)
         rmsd_status = p.rmsd_filter(0.2, mirror_match=True, print_status=False)
         print(f"[{molname}] Found {rmsd_status['DelCount']} duplicates")
@@ -154,10 +152,5 @@ def main():
 
 if __name__ == "__main__":
     import environments as env
-    # Ringo is needed only for Confpool
-    # RINGO_FLAGS = f'-rmsd -eweak -mcrsmart -vara 5 -varb 1'
-    # env.build_ringo('gnu', RINGO_FLAGS, __file__)
-
     # Execute 'main' function of this script in appropriate environment
-    # main()
-    env.exec(__file__, func=main, env='intelrdkit')
+    env.exec(__file__, func=main, env='intel')

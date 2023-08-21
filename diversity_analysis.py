@@ -1542,17 +1542,17 @@ if __name__ == "__main__":
     # Tasks to be done
     # 1) Compute RMSD matrices on ring atoms
     # if run_settings['mode'] != 'perspective':
-    #     env.exec(__file__, func=unite_and_rmsdcalc, env='intelrdkit', args=[run_settings])
+    #     env.exec(__file__, func=unite_and_rmsdcalc, env='intel', args=[run_settings])
     
     # 2.1) Obtain optimal conformer clusterings
     # if run_settings['use_refconformers']:
-    #     env.exec(__file__, func=do_confspace_partition, env='intelrdkit', args=[run_settings])
+    #     env.exec(__file__, func=do_confspace_partition, env='intel', args=[run_settings])
     # else:
     #     env.exec(__file__, func=gen_clustering_plots, env='python_R', args=[run_settings])
-    #     env.exec(__file__, func=process_good_clusterings, env='intelrdkit', args=[run_settings])
+    #     env.exec(__file__, func=process_good_clusterings, env='intel', args=[run_settings])
 
     # 2.2) Obtain 2D embeddings
-    # env.exec(__file__, func=calc_2d_embeddings, env='intelrdkit', args=[run_settings])
+    # env.exec(__file__, func=calc_2d_embeddings, env='intel', args=[run_settings])
 
     # 3) Visualize the results
     # env.exec(__file__, func=plot_clustering_quality, env='gnu', args=[run_settings])

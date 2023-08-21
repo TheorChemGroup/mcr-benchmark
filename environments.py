@@ -1,65 +1,39 @@
-import os, multiprocessing, shutil, inspect
+import os, multiprocessing, inspect
 
 
 def modes_from_flags(current_dir, flags=""):
-    BUILD_COMMAND = f'python build.py {flags}'
     modes = {
-        'intel': {
-            'envload': [
-                'source /s/ls4/users/knvvv/intelinit'
-            ],
-            'build': [
-                'cd ..',
-                BUILD_COMMAND,
-                f'cp ringo.cpython*.so {current_dir}',
-                f'cd {current_dir}'
-            ],
-            'checkpython': "/s/ls4/users/knvvv/.conda/envs/intelpy/bin/python"
-        },
-        'intelrdkit': {
-            'envload': [
-                'source /s/ls4/users/knvvv/intelinit',
-                'conda activate rdkit'
-            ],
-            'build': [
-                'cd ..',
-                BUILD_COMMAND,
-                f'cp ringo.cpython*.so {current_dir}',
-                f'cd {current_dir}'
-            ],
-            'checkpython': "/s/ls4/users/knvvv/.conda/envs/intelpy/bin/python"
-        },
-        'gnu': {
+        'gnu': { # gnu_env.yml
             'envload': [
                 'source /s/ls4/users/knvvv/condainit',
                 'conda activate full'
             ],
-            'build': [
-                'cd ..',
-                BUILD_COMMAND,
-                f'cp ringo.cpython*.so {current_dir}',
-                f'cd {current_dir}'
-            ],
             'checkpython': "/s/ls4/users/knvvv/bin/ls_conda/envs/full/bin/python"
         },
-        'python_R': {
+        'python_R': { # rpython_env.yml
             'envload': [
                 'source /s/ls4/users/knvvv/condainit',
                 'conda activate rpyenv'
             ],
-            'build': [
-                'cd ..',
-                BUILD_COMMAND,
-                f'cp ringo.cpython*.so {current_dir}',
-                f'cd {current_dir}'
-            ],
             'checkpython': "/s/ls4/users/knvvv/bin/ls_conda/envs/rpyenv/bin/python"
         },
+
+        # For benchmark we used intelpython for better performance
+        # It's possible to recreate this env by hand to have all the same packages as 'gnu'
+        # (however, since this env cannot be reproduced from YAML, it's easier to use basic python instead)
+        # 'intelrdkit': {
+        #     'envload': [
+        #         'source /s/ls4/users/knvvv/intelinit',
+        #         'conda activate rdkit'
+        #     ],
+        #     'checkpython': "/s/ls4/users/knvvv/.conda/envs/intelpy/bin/python"
+        # },
     }
+
+    # Pass basic python as if it is intelpython, because it's easier to setup from YAML files
+    if 'intel' not in modes:
+        modes['intel'] = modes['gnu']
     return modes
-# def check_build_flag(flag, execmode):
-#     build_line = '&&'.join(EXECUTION_MODES[execmode]['build'])
-#     return flag in build_line
 
 
 def function_call_line(function_name, script_path, *args):
@@ -79,27 +53,6 @@ def run_separately(script_parts, jobname='Untitled job'):
     print(' '.join(exec_parts))
     exit_code = os.system(' '.join(exec_parts))
     assert exit_code == 0, f'nonzero exit code at task "{jobname}"'
-
-
-def build_ringo(env_name, build_flags, script_path):
-    # Primary checks
-    assert isinstance(build_flags, str)
-    script_dir = os.path.dirname(os.path.abspath(script_path))
-    base_pyutils = os.path.join(script_dir, '..', 'pyutils')
-    use_pyutils = os.path.join(script_dir, 'pyutils')
-    assert os.path.exists(base_pyutils)
-    # Update (copy a new) pyutils module for ringo
-    if os.path.exists(use_pyutils):
-        shutil.rmtree(use_pyutils)
-    shutil.copytree(base_pyutils, use_pyutils)
-
-    # Build ringo
-    execution_mode = modes_from_flags(script_dir, build_flags)[env_name]
-    script_parts = [
-        execution_mode['envload'],
-        execution_mode['build']
-    ]
-    run_separately(script_parts, jobname='Ringo build')
 
 def exec(script_path, func=None, funcname=None, env='gnu', args={}):
     # __file__, func=main, env='gnu'

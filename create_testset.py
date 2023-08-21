@@ -1,6 +1,8 @@
 import glob, ntpath, json, zipfile, os
 
 MOLFILES = {}
+
+# Specify the location of the 'start_conformers' directory
 for sdf in glob.glob(os.path.join('..', 'start_conformers', '*.sdf')):
     MOLFILES[ntpath.basename(sdf).replace('.sdf', '')] = sdf
 
@@ -22,7 +24,7 @@ if __name__ == "__main__":
     with open(JSON_NAME, "w") as f:
         json.dump(final_testset, f)  
     
-    # This is just for visual check of molecules
+    # Save test molecules as zip
     sdf_names = [fname for fname in final_testset.values()]
     with zipfile.ZipFile(ARCHIVE_NAME, 'w') as new_zip:
         # Add each file to the archive

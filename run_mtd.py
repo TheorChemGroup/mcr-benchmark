@@ -1,12 +1,11 @@
-import os, json, time, glob, ntpath, sys, subprocess, signal, shutil
+import os, json, time, glob, subprocess, signal, shutil
 
-MTD_DIR = './mtd_test'
+MTD_DIR = './mtd_temp'
 TESTSET_JSON = 'testcases.json'
 MTD_METHOD = 'mtd'
 DF_FILENAME = f'{MTD_METHOD}_df.csv'
 OUTPUT_DIR = f'{MTD_METHOD}_conformers'
 MAX_TIME = 10 * 60 # Time in seconds
-# MAX_TIME = 60 # Time in seconds
 
 BOHR2A = 0.529177
 
@@ -124,7 +123,7 @@ def gen_mtd(molname, sdf_name, p, charge=0):
     xyzs, syms = ccmol.as_xyz()
     write_xyz(xyzs, syms, start_xyzfile)
 
-    # Soon will kill this CREST process and scavenge its MTD input😈
+    # Soon will kill this CREST process and take its MTD input
     crest_process = subprocess.Popen(f"./exec_dummycrest {calc_dir}", shell = True)
 
     # Prepare to spot the 'coord' file
@@ -170,7 +169,6 @@ def gen_mtd(molname, sdf_name, p, charge=0):
     # Guess what happens when MAX_TIME has passed? 🔪
     while (time.time() - start_time) < MAX_TIME:
         time.sleep(0.05)
-    # Time to say goodbye
     kill_xtb()
 
     for snap_file in glob.glob(os.path.join(calc_dir, "scoord.*")):
@@ -179,7 +177,6 @@ def gen_mtd(molname, sdf_name, p, charge=0):
 
 def main():
     import pandas as pd
-    import numpy as np
     import ringo
     from charges import CHARGES, CHARGES_MOLS
 
@@ -238,5 +235,4 @@ def main():
     
 if __name__ == "__main__":
     import environments as env
-    # main()
-    env.exec(__file__, func=main, env='intelrdkit')
+    env.exec(__file__, func=main, env='intel')

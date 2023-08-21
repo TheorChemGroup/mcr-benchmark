@@ -1,4 +1,4 @@
-import os, json, time
+import os, time
 
 # MAX_TIME = 2 # s
 MAX_TIME = 600 # s
@@ -64,7 +64,6 @@ def main(env_name):
 
     import sys, json
     import pandas as pd
-    import numpy as np
     import ringo
     from chemscripts.geom import Molecule
 
@@ -139,6 +138,4 @@ def main(env_name):
 
 if __name__ == "__main__":
     import environments as env
-    # main()
-    # env.exec(__file__, func=main, env='gnu', args=('ringo',))
     env.exec(__file__, func=main, env='intel', args=('ringointel',))

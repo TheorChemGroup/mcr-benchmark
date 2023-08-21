@@ -1,6 +1,6 @@
 import os, json, time, subprocess, shutil
 
-MM_DIR = './mmbasic_test'
+MM_DIR = './mmbasic_temp'
 TESTSET_JSON = 'small_testcases.json'
 MMBASIC_METHOD = 'mmbasic'
 DF_FILENAME = f'{MMBASIC_METHOD}_df.csv'
@@ -138,9 +138,7 @@ def gen_mmbasic(molname, sdf_name, p):
 
 def main():
     import pandas as pd
-    import numpy as np
-    import pyxyz, traceback
-    from charges import CHARGES, CHARGES_MOLS
+    import pyxyz
 
     # Create output directoris if they don't exist
     if os.path.exists(OUTPUT_DIR):
@@ -203,5 +201,4 @@ def main():
 
 if __name__ == "__main__":
     import environments as env
-    # main()
-    env.exec(__file__, func=main, env='intelrdkit')
+    env.exec(__file__, func=main, env='intel')

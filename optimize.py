@@ -451,7 +451,7 @@ def main():
         item['max_index'] = len(input_data)
 
     # start_xyz => optimized_xyz. Parallel optimization of all conformational ensembles
-    # parallelize_call(input_data, optimize_xyz)
+    parallelize_call(input_data, optimize_xyz)
 
     # optimized_xyz => filtered_xyz. Parallel RMSD filtering of all conformational ensembles:
     parallelize_call(input_data, rmsd_filter)
@@ -467,10 +467,9 @@ def main():
     parallelize_call(full_ensembles_data, lower_analysis)
 
     # Check and summarize optimization status from all generated XYZs
-    # summarize_flags(input_data, 'optimized_xyz')
+    summarize_flags(input_data, 'optimized_xyz')
     summarize_flags(input_data, 'lower_xyz')
     
-    # """
     # Combine all timings in a single df
     df_parts = []
     for method in METHODS:
@@ -563,10 +562,9 @@ def main():
         print("DataFrame contains NaN values!!!")
     
     df.to_csv(FINAL_DF_NAME, index=False)
-    # """
 
 
 if __name__ == "__main__":
     import environments as env
     # main()
-    env.exec(__file__, func=main, env='intelrdkit')
+    env.exec(__file__, func=main, env='intel')

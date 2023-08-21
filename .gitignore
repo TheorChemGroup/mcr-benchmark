@@ -18,3 +18,7 @@ optimized_conformers/
 perspective_ensemble_diversity/
 rdkit_conformers/
 ringointel_conformers/
+mtd_temp/
+mmbasic_temp/
+crest_temp/
+mmring_temp/
