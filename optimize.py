@@ -23,7 +23,10 @@ for method in METHODS:
     assert os.path.isdir(conformers_dir), f'{conformers_dir} not found'
     for xyzfile in glob.glob(os.path.join(conformers_dir, '*.xyz')):
         XYZ_FILES.append(xyzfile)
+
+# Number of threads to use for parallel segments of the workflow
 NPROCS = 54
+
 TESTSET_JSON = 'testcases.json'
 OPTIMIZED_DIR = './optimized_conformers'
 FILTERED_DIR = './filtered_conformers'

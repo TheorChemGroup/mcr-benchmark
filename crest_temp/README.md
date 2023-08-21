@@ -1,1 +1,1 @@
-Temporary files of CREST calculations are stored here
+Temporary files of CREST calculations (with and without genetic crossing) are stored here

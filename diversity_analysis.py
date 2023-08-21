@@ -43,6 +43,7 @@ PATHS['SUMMARY_PDF'] = 'final_report.pdf'
 # This is just to trick IDE not to highlight these variables as undefined. What have I done?..
 TOTALENSEMBLES_DIR, TOTALENSEMBLE_XYZ, RMSDMATRIX_DIR, CLUSTERING_OPTIONS_DIR, BEST_CLUSTERINGS_DIR, EMBEDDING_DIR, CLUSTERING_OPTION_PNG, MEDOID_INDICES_JSON, EMBEDDED_COORDS_DF, BEST_CLUSTERING_LABELS_JSON, TOTAL_EMBEDDING_CSV, CLUSTERING_EVALUATION_DIR, SUMMARY_PDF, CLUSTERING_EVALUATION_PNG, FINAL_DIVERSITY_DIR, FINAL_DIVERSITY_PNG, FINAL_DIVERSITY_SVG, ENERGYPLOT_DIR, ENERGYPLOT_PNG, REFERENCE_CONFS_DIR, REFERENCE_CONFS_JSON, RMSDMATRIX_FILE = (None,) * len(PATHS._paths)
 
+# Number of threads to use for parallel segments of the workflow
 NPROCS = 54
 
 PYXYZ_KWARGS = {
@@ -55,10 +56,8 @@ METHOD_NAMES = {
     RINGO_METHOD: 'Ringo',
     'rdkit': 'ETKDG\n(RDKit)',
     'mtd': 'MTD\n(XTB)',
-    # 'mmbasic': 'MacroModel\nbasic',
-    # 'mmring': 'Macrocyclic\nMacroModel',
-    'mmbasic': 'MacroModel\n(базовый)',
-    'mmring': 'MCS\nMacroModel',
+    'mmbasic': 'MacroModel\nbasic',
+    'mmring': 'Macrocyclic\nMacroModel',
     'crest': 'CREST',
 }
 BIG_TESTS = ['csd_FINWEE10', 'csd_MIWTER', 'csd_RECRAT', 'csd_RULSUN', 'pdb_1NWX', 'pdb_2C6H', 'pdb_2IYA', 'pdb_2QZK', 'pdb_3M6G', 'csd_YIVNOG']
@@ -80,20 +79,6 @@ TARGET_REFERENCE_RATIO = {
     1.5: 0.5,
     2.0: 0.0,
 }
-# TARGET_REFERENCE_RATIO = {
-#     # max RMSD => Ratio 1 - n_reference/n_total
-#     0.4: 0.9,
-#     0.6: 0.8,
-#     0.8: 0.5,
-#     1.5: 0.3,
-#     2.0: 0.0,
-# }
-    # 0.6: 0.7,
-    # 0.7: 0.6,
-    # 0.8: 0.5,
-    # 0.9: 0.4,
-    # 1.1: 0.2,
-    # 1.2: 0.1,
 RMSD_PERSPECTIVE_CUTOFF = 0.5
 
 def parse_description(descr):
@@ -177,14 +162,12 @@ def merge_ensembles(input_data, args):
         remove_unperspective(p, molname)
     
     # Final check of the total ensemble
-    requested_methods = set(item['method'] for item in input_data['methods'])
     resulting_methods = set()
     for m in p:
         conf_data = parse_description(m.descr)
         resulting_methods.add(conf_data['method'])
         assert 'energy' in conf_data
         assert conf_data['status'] in allowed_status
-    # assert requested_methods == resulting_methods, f'requested={requested_methods}, resulting={resulting_methods}'
 
     p.save(input_data['total_xyz'])
     print(f"Saved {input_data['total_xyz']}")
@@ -235,8 +218,6 @@ def calc_rmsd_matrix(input_data, args):
     print(f'Saved RMSD matrix {rmsd_file}')
 
 def unite_and_rmsdcalc(args):
-    if args['mode'] == 'perspective':
-        raise Exception('Sure that you want to recalculate RMSD matrices!?')
     PATHS.set_mainwd(args['main_wd'])
     PATHS.load_global()
 
@@ -1168,11 +1149,7 @@ def plot_diversity_thread(input_data, args):
     iteration = input_data['iteration']
     testcase = input_data['testcase']
     num_iterations = input_data['num_iterations']
-    GGPLOT_ADJUST = 0.7
-
-    GGPLOT_ADJUST_CUSTOM = {}
-    timings = get_method_timings(testcase)
-
+    
     print(f"Evaluating diversity for {testcase} ({iteration}/{num_iterations})", flush=True)
 
     if args['use_refconformers']:
@@ -1199,6 +1176,9 @@ def plot_diversity_thread(input_data, args):
         'other_unclustered': 'Alternative (unclustered)',
         'other_explored': 'Space explored by alternative',
     }
+    
+    timings = get_method_timings(testcase)
+
     for method in other_methods:
         remaining_methods = [m for m in other_methods if m != method]
         drop_axes = []
@@ -1442,13 +1422,13 @@ def assemble_summary(args):
     for idx, testcase in enumerate(testcases_seq):
         print(f'Processing {testcase}', flush=True)
         evalpng_path = CLUSTERING_EVALUATION_PNG.format(molname=testcase)
-        if args['mode'] != 'perspective':
+        if not args['use_refconformers']:
             cutoffpng_path = glob.glob(os.path.join(BEST_CLUSTERINGS_DIR, f'{testcase}_*_best.png'))[0]
         energyplot_path = ENERGYPLOT_PNG.format(molname=testcase)
         benchplot_path = FINAL_DIVERSITY_PNG.format(molname=testcase)
         
         evalpng = Image.open(evalpng_path)
-        if args['mode'] != 'perspective':
+        if not args['use_refconformers']:
             cutoffpng = Image.open(cutoffpng_path)
         energyplot = Image.open(energyplot_path)
         loaded_bench = os.path.isfile(benchplot_path)
@@ -1461,7 +1441,7 @@ def assemble_summary(args):
         left_side.insert(evalpng, type='middle')
         top_part = HImageLayout()
         top_part.insert(left_side.build(), type='middle')
-        if args['mode'] != 'perspective':
+        if not args['use_refconformers']:
             top_part.insert(cutoffpng, type='middle')
 
         top_part_img = top_part.build()
@@ -1489,73 +1469,89 @@ def assemble_summary(args):
 if __name__ == "__main__":
     import environments as env
 
-    args = sys.argv[1:]
+    """
+    keys in run_settings specify the important aspects of diversity analysis and
+    the way of results visualization. This keys have the following meanings:
 
-    # Low-energy conformers
-    # run_settings = {
-    #     'main_wd': './lowenergy_ensemble_diversity',
-    #     'mode': 'lowenergy',
-    #     'keep_unperspective': False,
-    #     'keep_perspective': False,
-    #     'use_refconformers': False,
-    #     'plot_highenergy': False,
-    #     'plot_perspective': False,
-    #     'expand_clusters': False,
-    # }
+    * main_wd - working directory for the entire diversity analysis
+    * mode - name of the execution mode. It's not used anywhere, but it can be for some hardcoded branches in analysis logic.
+    * keep_unperspective - drop all unperspective conformers at the beginning of the analysis
+    * keep_perspective - drop all perspective high-energy conformers at the beginning of the analysis
+    * use_refconformers - disable clustering and use reference conformers instead
+    * plot_highenergy - account for unperspective conformers when deciding which method found a cluster
+    * plot_perspective - account for perspective high-energy conformers when deciding which method found a cluster
+    * expand_clusters - generate diversity plots 
+    """
 
-    # Full ensemble
-    # run_settings = {
-    #     'main_wd': './complete_ensemble_diversity',
-    #     'mode': 'complete',
-    #     'keep_unperspective': True,
-    #     'keep_perspective': True,
-    #     'use_refconformers': False,
-    #     'plot_highenergy': True,
-    #     'plot_perspective': False,
-    #     'expand_clusters': False,
-    # }
-
-    # Perspective conformers
-    # run_settings = {
-    #     'main_wd': './perspective_ensemble_diversity',
-    #     'mode': 'perspective',
-    #     'keep_unperspective': True,
-    #     'keep_perspective': True,
-    #     'use_refconformers': True,
-    #     'plot_highenergy': False,
-    #     'plot_perspective': True,
-    #     'expand_clusters': False,
-    # }
-
-    # Filtered conformers (remove unperspective, plot conformers instead of clusters)
+    # This is the mode of diversity analysis used in the paper
+    # filtered conformers (remove unperspective from the start, employ clustering, plot conformers instead of clusters)
     run_settings = {
         'main_wd': './filtered_ensemble_diversity',
         'mode': 'filtered',
         'keep_unperspective': False,
         'keep_perspective': True,
         'use_refconformers': False,
-        'plot_highenergy': True, # We aren't keeping them, so this disables the redundant check for perspective conformers during plotting
+        'plot_highenergy': True, # We removed them already, so this disables the redundant check for perspective conformers during plotting
         'plot_perspective': True,
         'expand_clusters': True,
     }
 
     # Tasks to be done
     # 1) Compute RMSD matrices on ring atoms
-    # if run_settings['mode'] != 'perspective':
-    #     env.exec(__file__, func=unite_and_rmsdcalc, env='intel', args=[run_settings])
+    env.exec(__file__, func=unite_and_rmsdcalc, env='intel', args=[run_settings])
     
     # 2.1) Obtain optimal conformer clusterings
-    # if run_settings['use_refconformers']:
-    #     env.exec(__file__, func=do_confspace_partition, env='intel', args=[run_settings])
-    # else:
-    #     env.exec(__file__, func=gen_clustering_plots, env='python_R', args=[run_settings])
-    #     env.exec(__file__, func=process_good_clusterings, env='intel', args=[run_settings])
+    if run_settings['use_refconformers']:
+        env.exec(__file__, func=do_confspace_partition, env='intel', args=[run_settings])
+    else:
+        env.exec(__file__, func=gen_clustering_plots, env='python_R', args=[run_settings])
+        env.exec(__file__, func=process_good_clusterings, env='intel', args=[run_settings])
 
     # 2.2) Obtain 2D embeddings
-    # env.exec(__file__, func=calc_2d_embeddings, env='intel', args=[run_settings])
+    env.exec(__file__, func=calc_2d_embeddings, env='intel', args=[run_settings])
 
     # 3) Visualize the results
-    # env.exec(__file__, func=plot_clustering_quality, env='gnu', args=[run_settings])
+    env.exec(__file__, func=plot_clustering_quality, env='gnu', args=[run_settings])
     env.exec(__file__, func=plot_energies, env='gnu', args=[run_settings])
     env.exec(__file__, func=plot_diversity, env='python_R', args=[run_settings])
-    # env.exec(__file__, func=assemble_summary, env='gnu', args=[run_settings])
+    env.exec(__file__, func=assemble_summary, env='gnu', args=[run_settings])
+
+    """
+    # These are a few more analysis modes that we have considered earlier
+
+    # complete mode (keep all high-energy conformers for analysis, use clustering, show only cluster centers on diversity plots)
+    run_settings = {
+        'main_wd': './complete_ensemble_diversity',
+        'mode': 'complete',
+        'keep_unperspective': True,
+        'keep_perspective': True,
+        'use_refconformers': False,
+        'plot_highenergy': True,
+        'plot_perspective': True,
+        'expand_clusters': False,
+    }
+
+    # low-energy mode (analyze only low-energy conformers, use clustering, show only cluster centers on diversity plots)
+    run_settings = {
+        'main_wd': './lowenergy_ensemble_diversity',
+        'mode': 'lowenergy',
+        'keep_unperspective': False,
+        'keep_perspective': False,
+        'use_refconformers': False,
+        'plot_highenergy': False,
+        'plot_perspective': False,
+        'expand_clusters': False,
+    }
+
+    # perspective mode (keep all high-energy conformers for analysis, use refpoints instead of clustering, show only cluster centers on diversity plots)
+    run_settings = {
+        'main_wd': './perspective_ensemble_diversity',
+        'mode': 'perspective',
+        'keep_unperspective': True,
+        'keep_perspective': True,
+        'use_refconformers': True,
+        'plot_highenergy': False,
+        'plot_perspective': True,
+        'expand_clusters': False,
+    }
+    """
