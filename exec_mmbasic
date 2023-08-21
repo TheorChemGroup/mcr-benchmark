@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# Change to the specified directory
+cd "$1"
+
+$SCHRODINGER/macromodel -WAIT -LOCAL input > log 2> error
