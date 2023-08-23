@@ -22,3 +22,4 @@ complete_ensemble_diversity/
 filtered_ensemble_diversity/
 lowenergy_ensemble_diversity/
 perspective_ensemble_diversity/
+cached_buildseqs.json
