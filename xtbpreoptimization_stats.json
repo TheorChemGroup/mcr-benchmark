@@ -1,0 +1,632 @@
+{
+    "./xtbpreoptimized_conformers/pdb_2VZM_ringointel.xyz": {
+        "topofail": 1417,
+        "succ": 8583
+    },
+    "./xtbpreoptimized_conformers/csd_CGPGAP10_ringointel.xyz": {
+        "succ": 8347,
+        "topofail": 1653
+    },
+    "./xtbpreoptimized_conformers/pdb_2ASP_ringointel.xyz": {
+        "succ": 2667,
+        "topofail": 419
+    },
+    "./xtbpreoptimized_conformers/csd_LALWIF_ringointel.xyz": {
+        "succ": 9504,
+        "topofail": 496
+    },
+    "./xtbpreoptimized_conformers/pdb_2VYP_ringointel.xyz": {
+        "succ": 78,
+        "topofail": 40
+    },
+    "./xtbpreoptimized_conformers/csd_RULSUN_ringointel.xyz": {
+        "succ": 3604,
+        "topofail": 915
+    },
+    "./xtbpreoptimized_conformers/pdb_1YND_ringointel.xyz": {
+        "succ": 250,
+        "topofail": 126,
+        "optfail": 1
+    },
+    "./xtbpreoptimized_conformers/csd_BIHYAS10_ringointel.xyz": {
+        "succ": 7008,
+        "topofail": 2992
+    },
+    "./xtbpreoptimized_conformers/csd_VOKBIG_ringointel.xyz": {
+        "succ": 28,
+        "topofail": 36
+    },
+    "./xtbpreoptimized_conformers/pdb_1BXO_ringointel.xyz": {
+        "topofail": 2110,
+        "succ": 2949
+    },
+    "./xtbpreoptimized_conformers/csd_PAPGAP_ringointel.xyz": {
+        "succ": 7716,
+        "topofail": 2284
+    },
+    "./xtbpreoptimized_conformers/pdb_3BXR_ringointel.xyz": {
+        "succ": 4882,
+        "topofail": 1640,
+        "optfail": 1
+    },
+    "./xtbpreoptimized_conformers/pdb_1PPJ_ringointel.xyz": {
+        "succ": 8259,
+        "topofail": 1741
+    },
+    "./xtbpreoptimized_conformers/pdb_2C7X_ringointel.xyz": {
+        "succ": 8746,
+        "topofail": 1254
+    },
+    "./xtbpreoptimized_conformers/csd_CIYLAY_ringointel.xyz": {
+        "succ": 1011,
+        "topofail": 58
+    },
+    "./xtbpreoptimized_conformers/csd_MIWTER_ringointel.xyz": {
+        "topofail": 1691,
+        "succ": 3862
+    },
+    "./xtbpreoptimized_conformers/csd_IDIMAJ_ringointel.xyz": {
+        "succ": 6634,
+        "topofail": 2837,
+        "optfail": 2
+    },
+    "./xtbpreoptimized_conformers/pdb_1NT1_ringointel.xyz": {
+        "succ": 9147,
+        "topofail": 853
+    },
+    "./xtbpreoptimized_conformers/csd_OHUXEU_ringointel.xyz": {
+        "topofail": 2608,
+        "succ": 5227,
+        "optfail": 1
+    },
+    "./xtbpreoptimized_conformers/pdb_2OTJ_ringointel.xyz": {
+        "succ": 7050,
+        "topofail": 2949,
+        "optfail": 1
+    },
+    "./xtbpreoptimized_conformers/csd_XAGYAG_ringointel.xyz": {
+        "succ": 7108,
+        "topofail": 912
+    },
+    "./xtbpreoptimized_conformers/pdb_1FKJ_ringointel.xyz": {
+        "succ": 2414,
+        "topofail": 581
+    },
+    "./xtbpreoptimized_conformers/csd_QEKNID_ringointel.xyz": {
+        "succ": 1441,
+        "topofail": 443
+    },
+    "./xtbpreoptimized_conformers/csd_WENFOL_ringointel.xyz": {
+        "succ": 2431,
+        "topofail": 755,
+        "optfail": 1
+    },
+    "./xtbpreoptimized_conformers/csd_GIHKOX10_ringointel.xyz": {
+        "topofail": 161,
+        "succ": 113
+    },
+    "./xtbpreoptimized_conformers/csd_RECRAT_ringointel.xyz": {
+        "succ": 6326,
+        "topofail": 1374
+    },
+    "./xtbpreoptimized_conformers/csd_MUCYIT_ringointel.xyz": {
+        "succ": 6076,
+        "topofail": 1730
+    },
+    "./xtbpreoptimized_conformers/csd_CAMVES01_ringointel.xyz": {
+        "succ": 8044,
+        "topofail": 1956,
+        "optfail": 1
+    },
+    "./xtbpreoptimized_conformers/pdb_1NTK_ringointel.xyz": {
+        "succ": 6420,
+        "topofail": 3580
+    },
+    "./xtbpreoptimized_conformers/csd_DAFGIA_ringointel.xyz": {
+        "succ": 6799,
+        "topofail": 1112
+    },
+    "./xtbpreoptimized_conformers/pdb_3I6O_ringointel.xyz": {
+        "succ": 8217,
+        "topofail": 1783
+    },
+    "./xtbpreoptimized_conformers/csd_DALPUC_ringointel.xyz": {
+        "topofail": 1528,
+        "succ": 3604
+    },
+    "./xtbpreoptimized_conformers/pdb_1SKX_ringointel.xyz": {
+        "succ": 7379,
+        "topofail": 2621
+    },
+    "./xtbpreoptimized_conformers/csd_VOLHOU_ringointel.xyz": {
+        "topofail": 2072,
+        "succ": 7928
+    },
+    "./xtbpreoptimized_conformers/pdb_1ESV_ringointel.xyz": {
+        "succ": 9719,
+        "topofail": 281
+    },
+    "./xtbpreoptimized_conformers/csd_MALVAL10_ringointel.xyz": {
+        "succ": 812,
+        "topofail": 541
+    },
+    "./xtbpreoptimized_conformers/pdb_3M6G_ringointel.xyz": {
+        "succ": 5688,
+        "topofail": 1384
+    },
+    "./xtbpreoptimized_conformers/csd_ACICOE_ringointel.xyz": {
+        "topofail": 1777,
+        "succ": 1715
+    },
+    "./xtbpreoptimized_conformers/pdb_2GPL_ringointel.xyz": {
+        "succ": 3636,
+        "topofail": 1313,
+        "optfail": 2
+    },
+    "./xtbpreoptimized_conformers/pdb_1FKI_ringointel.xyz": {
+        "succ": 7867,
+        "topofail": 2133
+    },
+    "./xtbpreoptimized_conformers/pdb_2F3F_ringointel.xyz": {
+        "topofail": 2891,
+        "succ": 7109
+    },
+    "./xtbpreoptimized_conformers/csd_WUMKIY_ringointel.xyz": {
+        "succ": 8494,
+        "topofail": 1506
+    },
+    "./xtbpreoptimized_conformers/csd_NITFEB_ringointel.xyz": {
+        "succ": 9385,
+        "topofail": 615
+    },
+    "./xtbpreoptimized_conformers/csd_CALSAR_ringointel.xyz": {
+        "succ": 8524,
+        "topofail": 1476
+    },
+    "./xtbpreoptimized_conformers/pdb_1XS7_ringointel.xyz": {
+        "succ": 3415,
+        "topofail": 1193,
+        "optfail": 2
+    },
+    "./xtbpreoptimized_conformers/csd_KAQJAN_ringointel.xyz": {
+        "succ": 7010,
+        "topofail": 1185
+    },
+    "./xtbpreoptimized_conformers/csd_VALINM30_ringointel.xyz": {
+        "topofail": 79,
+        "succ": 78
+    },
+    "./xtbpreoptimized_conformers/csd_XACJAM_ringointel.xyz": {
+        "topofail": 1007,
+        "succ": 2316
+    },
+    "./xtbpreoptimized_conformers/csd_YAGKOG_ringointel.xyz": {
+        "topofail": 71,
+        "succ": 68
+    },
+    "./xtbpreoptimized_conformers/csd_HEBLIJ_ringointel.xyz": {
+        "succ": 1899,
+        "topofail": 1187,
+        "optfail": 3
+    },
+    "./xtbpreoptimized_conformers/pdb_1XBP_ringointel.xyz": {
+        "succ": 8913,
+        "topofail": 1087
+    },
+    "./xtbpreoptimized_conformers/pdb_1NMK_ringointel.xyz": {
+        "succ": 7968,
+        "topofail": 2031,
+        "optfail": 1
+    },
+    "./xtbpreoptimized_conformers/csd_JOKSAD_ringointel.xyz": {
+        "succ": 9951,
+        "topofail": 49
+    },
+    "./xtbpreoptimized_conformers/csd_FINWEE10_ringointel.xyz": {
+        "topofail": 705,
+        "succ": 2577
+    },
+    "./xtbpreoptimized_conformers/csd_DIGTOC_ringointel.xyz": {
+        "topofail": 623,
+        "succ": 8458
+    },
+    "./xtbpreoptimized_conformers/csd_GAFSEL_ringointel.xyz": {
+        "succ": 8939,
+        "topofail": 1060,
+        "optfail": 1
+    },
+    "./xtbpreoptimized_conformers/csd_YIVNOG_ringointel.xyz": {
+        "succ": 3685,
+        "topofail": 346
+    },
+    "./xtbpreoptimized_conformers/csd_DEKSAN_ringointel.xyz": {
+        "succ": 10,
+        "topofail": 16
+    },
+    "./xtbpreoptimized_conformers/csd_POXTRD10_ringointel.xyz": {
+        "succ": 8890,
+        "topofail": 1110
+    },
+    "./xtbpreoptimized_conformers/csd_HIKPAS01_ringointel.xyz": {
+        "succ": 9642,
+        "topofail": 358
+    },
+    "./xtbpreoptimized_conformers/pdb_1YET_ringointel.xyz": {
+        "succ": 8416,
+        "topofail": 1584
+    },
+    "./xtbpreoptimized_conformers/pdb_1NWX_ringointel.xyz": {
+        "succ": 5286,
+        "topofail": 1363
+    },
+    "./xtbpreoptimized_conformers/pdb_1GHG_ringointel.xyz": {
+        "succ": 1587,
+        "topofail": 1978,
+        "optfail": 1
+    },
+    "./xtbpreoptimized_conformers/pdb_1KHR_ringointel.xyz": {
+        "succ": 9042,
+        "topofail": 958
+    },
+    "./xtbpreoptimized_conformers/csd_REMCOC_ringointel.xyz": {
+        "succ": 9859,
+        "topofail": 141
+    },
+    "./xtbpreoptimized_conformers/csd_TERDAW_ringointel.xyz": {
+        "succ": 1403,
+        "topofail": 1035
+    },
+    "./xtbpreoptimized_conformers/csd_BIDPIN10_ringointel.xyz": {
+        "succ": 9210,
+        "topofail": 789,
+        "optfail": 1
+    },
+    "./xtbpreoptimized_conformers/pdb_2WEA_ringointel.xyz": {
+        "topofail": 2603,
+        "succ": 5087
+    },
+    "./xtbpreoptimized_conformers/csd_CTILIH10_ringointel.xyz": {
+        "topofail": 59,
+        "succ": 33
+    },
+    "./xtbpreoptimized_conformers/csd_CTVHVH01_ringointel.xyz": {
+        "topofail": 39,
+        "succ": 20
+    },
+    "./xtbpreoptimized_conformers/pdb_1MRL_ringointel.xyz": {
+        "succ": 4380,
+        "topofail": 499
+    },
+    "./xtbpreoptimized_conformers/pdb_1BZL_ringointel.xyz": {
+        "succ": 694,
+        "topofail": 459,
+        "optfail": 1
+    },
+    "./xtbpreoptimized_conformers/csd_DACMAW_ringointel.xyz": {
+        "succ": 3625,
+        "topofail": 3116,
+        "optfail": 1
+    },
+    "./xtbpreoptimized_conformers/pdb_1QPF_ringointel.xyz": {
+        "succ": 1050,
+        "topofail": 228
+    },
+    "./xtbpreoptimized_conformers/pdb_2ASO_ringointel.xyz": {
+        "topofail": 440,
+        "succ": 1465,
+        "optfail": 2
+    },
+    "./xtbpreoptimized_conformers/pdb_3KEE_ringointel.xyz": {
+        "topofail": 802,
+        "succ": 6206
+    },
+    "./xtbpreoptimized_conformers/pdb_3K5C_ringointel.xyz": {
+        "succ": 9347,
+        "topofail": 653
+    },
+    "./xtbpreoptimized_conformers/csd_COHVAW_ringointel.xyz": {
+        "succ": 8935,
+        "topofail": 1065
+    },
+    "./xtbpreoptimized_conformers/pdb_2C6H_ringointel.xyz": {
+        "succ": 8792,
+        "topofail": 1208
+    },
+    "./xtbpreoptimized_conformers/csd_HAXMOI10_ringointel.xyz": {
+        "topofail": 90,
+        "succ": 80
+    },
+    "./xtbpreoptimized_conformers/pdb_2QZK_ringointel.xyz": {
+        "succ": 5822,
+        "topofail": 427
+    },
+    "./xtbpreoptimized_conformers/pdb_2XBK_ringointel.xyz": {
+        "succ": 5174,
+        "topofail": 573
+    },
+    "./xtbpreoptimized_conformers/csd_KIVDIC_ringointel.xyz": {
+        "succ": 5685,
+        "topofail": 1802,
+        "optfail": 1
+    },
+    "./xtbpreoptimized_conformers/csd_XAGXOT_ringointel.xyz": {
+        "succ": 7743,
+        "topofail": 648
+    },
+    "./xtbpreoptimized_conformers/csd_CAZVEF_ringointel.xyz": {
+        "succ": 8886,
+        "topofail": 1114
+    },
+    "./xtbpreoptimized_conformers/pdb_1E9W_ringointel.xyz": {
+        "topofail": 538,
+        "succ": 262
+    },
+    "./xtbpreoptimized_conformers/pdb_3DV5_ringointel.xyz": {
+        "succ": 9221,
+        "topofail": 779
+    },
+    "./xtbpreoptimized_conformers/csd_ZAJDUJ_ringointel.xyz": {
+        "topofail": 3,
+        "succ": 1
+    },
+    "./xtbpreoptimized_conformers/csd_MECBOL_ringointel.xyz": {
+        "succ": 9401,
+        "topofail": 599
+    },
+    "./xtbpreoptimized_conformers/pdb_1QZ6_ringointel.xyz": {
+        "succ": 5301,
+        "topofail": 1452
+    },
+    "./xtbpreoptimized_conformers/csd_CIYKUR_ringointel.xyz": {
+        "succ": 794,
+        "topofail": 273
+    },
+    "./xtbpreoptimized_conformers/pdb_1JFF_ringointel.xyz": {
+        "topofail": 1845,
+        "succ": 2035
+    },
+    "./xtbpreoptimized_conformers/pdb_1PKF_ringointel.xyz": {
+        "succ": 9170,
+        "topofail": 830
+    },
+    "./xtbpreoptimized_conformers/pdb_1NSG_ringointel.xyz": {
+        "succ": 592,
+        "topofail": 201,
+        "optfail": 1
+    },
+    "./xtbpreoptimized_conformers/pdb_2DG4_ringointel.xyz": {
+        "topofail": 294,
+        "succ": 983,
+        "optfail": 1
+    },
+    "./xtbpreoptimized_conformers/csd_QUDROW_ringointel.xyz": {
+        "succ": 9811,
+        "topofail": 189
+    },
+    "./xtbpreoptimized_conformers/pdb_2IYF_ringointel.xyz": {
+        "succ": 1030,
+        "topofail": 496
+    },
+    "./xtbpreoptimized_conformers/pdb_2F3E_ringointel.xyz": {
+        "topofail": 1718,
+        "succ": 3914
+    },
+    "./xtbpreoptimized_conformers/csd_OHIDUE_ringointel.xyz": {
+        "succ": 6304,
+        "topofail": 3559,
+        "optfail": 1
+    },
+    "./xtbpreoptimized_conformers/csd_FIVSAE_ringointel.xyz": {
+        "succ": 8160,
+        "topofail": 1840
+    },
+    "./xtbpreoptimized_conformers/csd_GEZBUI_ringointel.xyz": {
+        "topofail": 2358,
+        "succ": 6399,
+        "optfail": 1
+    },
+    "./xtbpreoptimized_conformers/csd_XAGXIN_ringointel.xyz": {
+        "succ": 9570,
+        "topofail": 430
+    },
+    "./xtbpreoptimized_conformers/csd_NUCZUH_ringointel.xyz": {
+        "succ": 4254,
+        "topofail": 2333,
+        "optfail": 4
+    },
+    "./xtbpreoptimized_conformers/pdb_1KEG_ringointel.xyz": {
+        "succ": 4907,
+        "topofail": 1395,
+        "optfail": 2
+    },
+    "./xtbpreoptimized_conformers/pdb_1A7X_ringointel.xyz": {
+        "topofail": 672,
+        "succ": 1539,
+        "optfail": 1
+    },
+    "./xtbpreoptimized_conformers/pdb_1FKL_ringointel.xyz": {
+        "succ": 1356,
+        "topofail": 287,
+        "optfail": 2
+    },
+    "./xtbpreoptimized_conformers/pdb_3DV1_ringointel.xyz": {
+        "succ": 8909,
+        "topofail": 1091
+    },
+    "./xtbpreoptimized_conformers/csd_FEGJAD_ringointel.xyz": {
+        "succ": 3976,
+        "topofail": 1160
+    },
+    "./xtbpreoptimized_conformers/csd_ABOMOT_ringointel.xyz": {
+        "succ": 439,
+        "topofail": 330
+    },
+    "./xtbpreoptimized_conformers/pdb_1QZ5_ringointel.xyz": {
+        "succ": 832,
+        "topofail": 284
+    },
+    "./xtbpreoptimized_conformers/pdb_1EHL_ringointel.xyz": {
+        "succ": 389
+    },
+    "./xtbpreoptimized_conformers/pdb_1TPS_ringointel.xyz": {
+        "topofail": 210,
+        "succ": 181
+    },
+    "./xtbpreoptimized_conformers/csd_CYVIHV10_ringointel.xyz": {
+        "succ": 1684,
+        "topofail": 1112
+    },
+    "./xtbpreoptimized_conformers/csd_KAQJER_ringointel.xyz": {
+        "succ": 3465,
+        "topofail": 541
+    },
+    "./xtbpreoptimized_conformers/csd_YUYYEW_ringointel.xyz": {
+        "succ": 9324,
+        "topofail": 676
+    },
+    "./xtbpreoptimized_conformers/csd_FIXYEQ_ringointel.xyz": {
+        "succ": 8434,
+        "topofail": 1566
+    },
+    "./xtbpreoptimized_conformers/csd_VAKPIH_ringointel.xyz": {
+        "succ": 6362,
+        "topofail": 703
+    },
+    "./xtbpreoptimized_conformers/csd_QOSNAN_ringointel.xyz": {
+        "topofail": 4958,
+        "succ": 5040,
+        "optfail": 3
+    },
+    "./xtbpreoptimized_conformers/pdb_1PFE_ringointel.xyz": {
+        "topofail": 2466,
+        "succ": 1126
+    },
+    "./xtbpreoptimized_conformers/pdb_7UPJ_ringointel.xyz": {
+        "succ": 7685,
+        "topofail": 463
+    },
+    "./xtbpreoptimized_conformers/pdb_2PH8_ringointel.xyz": {
+        "topofail": 216,
+        "succ": 6427
+    },
+    "./xtbpreoptimized_conformers/csd_YUPBAN01_ringointel.xyz": {
+        "topofail": 89,
+        "succ": 71
+    },
+    "./xtbpreoptimized_conformers/pdb_1YXQ_ringointel.xyz": {
+        "succ": 9,
+        "topofail": 2
+    },
+    "./xtbpreoptimized_conformers/pdb_1OSF_ringointel.xyz": {
+        "succ": 8200,
+        "topofail": 1489,
+        "optfail": 2
+    },
+    "./xtbpreoptimized_conformers/pdb_2WHW_ringointel.xyz": {
+        "succ": 9917,
+        "topofail": 83
+    },
+    "./xtbpreoptimized_conformers/pdb_1FKD_ringointel.xyz": {
+        "topofail": 771,
+        "succ": 2425
+    },
+    "./xtbpreoptimized_conformers/pdb_3EKS_ringointel.xyz": {
+        "succ": 9809,
+        "topofail": 191
+    },
+    "./xtbpreoptimized_conformers/csd_WUBGAB_ringointel.xyz": {
+        "succ": 942,
+        "topofail": 663
+    },
+    "./xtbpreoptimized_conformers/csd_CHPSAR_ringointel.xyz": {
+        "succ": 6835,
+        "topofail": 1701
+    },
+    "./xtbpreoptimized_conformers/csd_QUDRIQ_ringointel.xyz": {
+        "succ": 9782,
+        "topofail": 218
+    },
+    "./xtbpreoptimized_conformers/csd_ICYSPA_ringointel.xyz": {
+        "topofail": 15,
+        "succ": 16
+    },
+    "./xtbpreoptimized_conformers/csd_YAGVEH_ringointel.xyz": {
+        "succ": 4054,
+        "topofail": 2857
+    },
+    "./xtbpreoptimized_conformers/csd_JINWUZ_ringointel.xyz": {
+        "succ": 4674,
+        "topofail": 2096
+    },
+    "./xtbpreoptimized_conformers/pdb_1WUA_ringointel.xyz": {
+        "succ": 424,
+        "topofail": 86
+    },
+    "./xtbpreoptimized_conformers/csd_FAGFEZ_ringointel.xyz": {
+        "succ": 6350,
+        "topofail": 3650
+    },
+    "./xtbpreoptimized_conformers/pdb_3ABA_ringointel.xyz": {
+        "succ": 8120,
+        "topofail": 1880
+    },
+    "./xtbpreoptimized_conformers/csd_VUHHEM_ringointel.xyz": {
+        "succ": 3068,
+        "topofail": 2241,
+        "optfail": 1
+    },
+    "./xtbpreoptimized_conformers/csd_AAGGAG10_ringointel.xyz": {
+        "succ": 7515,
+        "topofail": 2485
+    },
+    "./xtbpreoptimized_conformers/pdb_1S22_ringointel.xyz": {
+        "succ": 8525,
+        "topofail": 1474,
+        "optfail": 2
+    },
+    "./xtbpreoptimized_conformers/csd_ABOJOR_ringointel.xyz": {
+        "succ": 6031,
+        "topofail": 1355
+    },
+    "./xtbpreoptimized_conformers/csd_CUQRUB_ringointel.xyz": {
+        "succ": 6,
+        "topofail": 6
+    },
+    "./xtbpreoptimized_conformers/csd_CLPGDH_ringointel.xyz": {
+        "succ": 2523,
+        "topofail": 1049
+    },
+    "./xtbpreoptimized_conformers/csd_RASTIO_ringointel.xyz": {
+        "topofail": 2556,
+        "succ": 7444
+    },
+    "./xtbpreoptimized_conformers/csd_RUQVAB_ringointel.xyz": {
+        "succ": 8187,
+        "topofail": 1813
+    },
+    "./xtbpreoptimized_conformers/pdb_2IYA_ringointel.xyz": {
+        "succ": 2723,
+        "topofail": 772
+    },
+    "./xtbpreoptimized_conformers/csd_CAHWEN_ringointel.xyz": {
+        "succ": 2496,
+        "topofail": 1094
+    },
+    "./xtbpreoptimized_conformers/pdb_2Q0R_ringointel.xyz": {
+        "succ": 9262,
+        "topofail": 737,
+        "optfail": 1
+    },
+    "./xtbpreoptimized_conformers/pdb_2ASM_ringointel.xyz": {
+        "succ": 2353,
+        "topofail": 372
+    },
+    "./xtbpreoptimized_conformers/pdb_1QPL_ringointel.xyz": {
+        "succ": 1255,
+        "topofail": 541
+    },
+    "./xtbpreoptimized_conformers/csd_OHIFAM_ringointel.xyz": {
+        "succ": 4834,
+        "topofail": 2167
+    }
+}

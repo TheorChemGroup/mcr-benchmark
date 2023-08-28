@@ -97,7 +97,7 @@ def gen_crest(molname, sdf_name, p, charge=0):
 def main():
     import pandas as pd
     import pyxyz
-    from charges import CHARGES, CHARGES_MOLS
+    from charges import CHARGES
 
     # Create output directoris if they don't exist
     if os.path.exists(OUTPUT_DIR):
@@ -129,7 +129,7 @@ def main():
 
         # Must pass the molecular charge if it is not zero
         charge = 0
-        if molname in CHARGES_MOLS:
+        if molname in CHARGES:
             charge = CHARGES[molname]
 
         with TimingContext(timer, molname):

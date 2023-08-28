@@ -1,21 +1,26 @@
 import os, multiprocessing, inspect
 
 
-def modes_from_flags(current_dir, flags=""):
+def modes_from_flags(current_dir, assembler_dir="", build_flags=""):
     modes = {
         'gnu': { # gnu_env.yml
             'envload': [
                 'source /s/ls4/users/knvvv/condainit',
-                'conda activate full'
+                'conda activate full',
             ],
-            'checkpython': "/s/ls4/users/knvvv/bin/ls_conda/envs/full/bin/python"
+            'checkpython': "/s/ls4/users/knvvv/bin/ls_conda/envs/full/bin/python",
+            'build': [
+                f'cd {assembler_dir}',
+                function_call_line('build_ringo', './release_assemble.py', *('current', ['current'], build_flags, os.path.join(assembler_dir, 'release_assemble.py'))),
+                f'cd {current_dir}',
+            ],
         },
         'python_R': { # rpython_env.yml
             'envload': [
                 'source /s/ls4/users/knvvv/condainit',
                 'conda activate rpyenv'
             ],
-            'checkpython': "/s/ls4/users/knvvv/bin/ls_conda/envs/rpyenv/bin/python"
+            'checkpython': "/s/ls4/users/knvvv/bin/ls_conda/envs/rpyenv/bin/python",
         },
 
         # For benchmark we used intelpython for better performance
@@ -34,7 +39,6 @@ def modes_from_flags(current_dir, flags=""):
     if 'intel' not in modes:
         modes['intel'] = modes['gnu']
     return modes
-
 
 def function_call_line(function_name, script_path, *args):
     script_name = os.path.basename(script_path).replace('.py', '')
@@ -71,6 +75,19 @@ def exec(script_path, func=None, funcname=None, env='gnu', args={}):
     ]
     run_separately(script_parts, jobname=f'Execute {function_name}')
 
+def build_ringo(env_name, build_flags, assemble_path):
+    # Primary checks
+    assert isinstance(build_flags, str)
+    assemble_dir = os.path.dirname(os.path.abspath(assemble_path))
+    
+    # Build ringo
+    execution_mode = modes_from_flags(assemble_dir, assembler_dir=assemble_path, build_flags=build_flags)[env_name]
+    script_parts = [
+        execution_mode['envload'],
+        execution_mode['build']
+    ]
+    run_separately(script_parts, jobname='Ringo build')
+
 
 class PathHandler:
     def __init__(self, data={}):
@@ -84,8 +101,9 @@ class PathHandler:
 
     def set_mainwd(self, mainwd):
         self._paths = {
-            key: os.path.join(mainwd, value)
+            key: os.path.join(mainwd, value) if mainwd not in value else value
             for key, value in self._paths.items()
+            
         }
 
     def load_global(self):
@@ -98,6 +116,8 @@ class PathHandler:
         caller_frame = inspect.currentframe().f_back
         caller_globals = caller_frame.f_globals
         for key, value in final_paths.items():
+            if caller_globals[key] is not None:
+                continue
             caller_globals[key] = value
 
 def process_chunk(input_data):
