@@ -25,3 +25,7 @@ perspective_ensemble_diversity/
 cached_buildseqs.json
 xtbpreopt_temp/
 xtbpreoptimized_conformers/
+si_data/length_summary.csv
+si_data/gfnff_patterns.json
+si_data/*svg
+xtb_failsummary.json
