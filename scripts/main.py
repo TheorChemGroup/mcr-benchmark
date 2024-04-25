@@ -116,16 +116,17 @@ def main(stack_stream=None, prompt_transformator_path=False):
         tempdir_root = '.'
 
     # CHECK Correct line uncommented
-    # thread_manager = ThreadManager(
-    #     wd=TEMPFILES_DIR,
-    #     maxproc=46
-    # )
     thread_manager = ThreadManager(
-        wd=os.path.join(tempdir_root, f'tempfiles_{RUNNER_NODE}'),
-        maxproc=54
+        wd=os.path.join(tempdir_root, f'tempfiles'),
+        maxproc=46
     )
+    # thread_manager = ThreadManager(
+    #     wd=os.path.join(tempdir_root, f'tempfiles_{RUNNER_NODE}'),
+    #     maxproc=54
+    # )
 
-    main_logger = create_logger("Main", filename=f'{RUNNER_NODE}.log') # CHECK Log-file name
+    main_logger = create_logger("Main", filename=f'benchmark.log')
+    # main_logger = create_logger("Main", filename=f'{RUNNER_NODE}.log') # CHECK Log-file name
 
     add_directory_to_path(EXECSCRIPTS_DIR)
 
