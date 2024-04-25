@@ -1,4 +1,0 @@
-#!/bin/sh
-cd $1
-export OMP_NUM_THREADS=16
-/s/ls4/groups/g0130/knv_bin/crest/build/crest start.xyz -ewin 25.0 --gfnff --alph water -chrg $2 -nocross > log

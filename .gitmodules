@@ -1,3 +1,6 @@
-[submodule "chemscripts"]
-	path = chemscripts
+[submodule "pysquared"]
+	path = pysquared
+	url = https://gitlab.com/knvvv/pysquared.git
+[submodule "scripts/chemscripts"]
+	path = scripts/chemscripts
 	url = https://gitlab.com/knvvv/chemscripts.git

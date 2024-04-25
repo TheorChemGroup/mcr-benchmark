@@ -1,1 +1,0 @@
-Temporary files of macrocyclic MacroModel conformational searches are stored here

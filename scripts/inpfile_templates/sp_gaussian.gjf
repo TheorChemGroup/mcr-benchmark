@@ -1,0 +1,11 @@
+%nprocs={nproc}
+%chk=current.chk
+%oldchk=old.chk
+# {level}
+
+Conformation
+
+{chrg} {mult}
+{xyz}
+
+

@@ -1,8 +1,0 @@
-#!/bin/sh
-
-# Change to the specified directory
-cd "$1"
-START_MAEFILE="$2"
-PROJECT_NAME="$3"
-
-$SCHRODINGER/run macrocycle_conformational_sampling.py $START_MAEFILE -ffld OPLS3 -s WATER -energy_window 15.0 -rmsd_cutoff 0.2 -sim_iterations 5000 -iterations 5000 -eigen_recalc global_min -planar_torsion_sampling enhanced -j $PROJECT_NAME -WAIT -LOCAL > log 2> error
